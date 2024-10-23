@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\Students;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -17,7 +18,8 @@ class ParentsFactory extends Factory
     public function definition(): array
     {
         return [
-            //
+            'father_name' => fake()->firstNameMale() . ' ' . fake()->lastName(),
+            'mother_name' => fake()->firstNameFemale() . ' ' . fake()->lastName()
         ];
     }
 }
