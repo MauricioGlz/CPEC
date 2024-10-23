@@ -1,6 +1,6 @@
 <?php
 
-use App\Models\Student;
+use App\Models\Students;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -14,15 +14,13 @@ return new class extends Migration
     {
         Schema::create('parents', function (Blueprint $table) {
             $table->id();
-            $table->string('parents_id')->index();
-            $table->foreignIdFor(Student::class, 'student_id');
             $table->string('father_name');
-            $table->string('f_phone_number');
-            $table->string('f_ocupation');
+            $table->string('f_phone_number')->nullable();
+            $table->string('f_ocupation')->nullable();
             $table->string('mother_name');
-            $table->string('m_phone_number');
-            $table->string('relationship_status');
-            $table->string('m_ocupation');
+            $table->string('m_phone_number')->nullable();
+            $table->string('m_ocupation')->nullable();
+            $table->string('relationship_status')->nullable();
             $table->timestamps();
         });
     }
