@@ -22,8 +22,10 @@ return [
     'School level' => 'Nivel escolar',
     'Disability' => '¿Alguna discapacidad?',
     'Disability type' => 'Tipo de discapacidad',
-    'Religious prep' => '¿Tiene preparaci{on religiosa?',
+    'Religious prep' => '¿Tiene preparación religiosa?',
     'Last prep' => 'Ultima preparación',
     'Obserbations' => 'Obserbaciones de catequista',
+    'Yes' => 'Si',
+    'No' => 'No',
 ]; 
 

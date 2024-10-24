@@ -19,7 +19,7 @@ new #[Layout('layouts.app')] class extends Component
     <!-- Session Status -->
     <x-auth-session-status class="mb-4" :status="session('status')" />
 
-    <div class="py-12 px-36">
+    <div class="sm:px-8 md:px-44 sm:py-3 md:py-5">
 
         <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg px-4 py-6">
             <form wire:submit="addStudent" class="flex flex-col gap-2">
@@ -75,7 +75,54 @@ new #[Layout('layouts.app')] class extends Component
                     </div>
                 </div>
         
-                
+                {{-- Discapacidad --}}
+                <div>
+                    <x-input-label :value="__('welcome.Disability')" class="pb-3"/>
+                    <div class="flex flex-row gap-3">
+                        <div class="flex flex-row gap-3">
+                            <x-input-label for="disability" :value="__('welcome.Yes')" />
+                            <input type="radio" name="disability" :value="__('welcome.Yes')"/>
+                        </div>
+                        <div class="flex flex-row gap-3">
+                            <x-input-label for="disability" :value="__('welcome.No')" />
+                            <input type="radio" name="disability" :value="__('welcome.No')" selected/>
+                        </div>
+                    </div>
+                </div>
+        
+                {{-- Tipo de discapacidad --}}
+                <div>
+                    <x-input-label for="disability" :value="__('welcome.Disability type')" />
+                    <x-text-input id="disability" class="block mt-1 w-full" type="text" required autofocus />
+                    <x-input-error :messages="$errors->get('name')" class="mt-2" />
+                </div>
+        
+                {{-- Preparacion anterior --}}
+                <div>
+                    <x-input-label :value="__('welcome.Religious prep')" class="pb-3"/>
+                    <div class="flex flex-row gap-3">
+                        <div class="flex flex-row gap-3">
+                            <x-input-label for="religious-prep" :value="__('welcome.Yes')" />
+                            <input type="radio" name="religious-prep" :value="__('welcome.Yes')"/>
+                        </div>
+                        <div class="flex flex-row gap-3">
+                            <x-input-label for="religious-prep" :value="__('welcome.No')" />
+                            <input type="radio" name="religious-prep" :value="__('welcome.No')" selected/>
+                        </div>
+                    </div>
+                </div>
+
+                {{-- Ultima preparacion --}}
+                <div>
+                    <x-input-label for="last-prep" :value="__('welcome.Last prep')" />
+                    <x-text-input id="last-prep" class="block mt-1 w-full" type="text" required autofocus />
+                    <x-input-error :messages="$errors->get('name')" class="mt-2" />
+                </div>
+
+                <div>
+                    <x-input-label for="obserbations" :value="__('welcome.Obserbations')" />
+                    <x-text-input id="obserbations" class="block mt-1 w-full" type="text" autofocus />
+                </div>
         
                 <div class="flex items-center justify-end mt-4">
                     <x-primary-button class="ms-4">
