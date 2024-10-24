@@ -10,6 +10,8 @@ return [
     'Confirm Password' => 'Confirma tu contraseña',
     'Already registered?' => '¿Ya estas registrado?',
     'Profile' => 'Perfil',
-    'Log Out' => 'Cerrar seción'
+    'Log Out' => 'Cerrar seción',
+    'Dashboard' => 'Inicio',
+    'Home' => 'Tu inicio, '
 ]; 
 
