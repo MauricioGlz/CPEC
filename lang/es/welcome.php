@@ -12,6 +12,18 @@ return [
     'Profile' => 'Perfil',
     'Log Out' => 'Cerrar seción',
     'Dashboard' => 'Inicio',
-    'Home' => 'Tu inicio, '
+    'Home' => 'Tu inicio, ',
+    'Student name' => 'Nombres del niño',
+    'Add student' => 'Registrar',
+    'Father Surname' => 'Apellido paterno',
+    'Mother Surname' => 'Apellido materno',
+    'Birthday' => 'Fecha de nacimiento',
+    'School Grade' => 'Grado escolar actual',
+    'School level' => 'Nivel escolar',
+    'Disability' => '¿Alguna discapacidad?',
+    'Disability type' => 'Tipo de discapacidad',
+    'Religious prep' => '¿Tiene preparaci{on religiosa?',
+    'Last prep' => 'Ultima preparación',
+    'Obserbations' => 'Obserbaciones de catequista',
 ]; 
 

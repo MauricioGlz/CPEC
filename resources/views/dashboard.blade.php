@@ -28,7 +28,7 @@
                     </div>
                     <div class="px-4 py-2 text-right">
                         <x-primary-button> 
-                            <a href="/">Abrir</a>
+                            <a href="addStudent">Abrir</a>
                         </x-primary-button>
                     </div>
                 </div>

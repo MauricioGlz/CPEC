@@ -1,0 +1,90 @@
+<?php
+
+use Livewire\Attributes\Layout;
+use Livewire\Volt\Component;
+
+new #[Layout('layouts.app')] class extends Component
+{   
+    public array $levels = ['Primaria', 'Secundaria', 'Preparatoria'];
+    public array $grades = [1,2,3,4,5,6];
+    
+    public function addStudent()
+    {
+        
+    }
+};
+?>
+
+<div>
+    <!-- Session Status -->
+    <x-auth-session-status class="mb-4" :status="session('status')" />
+
+    <div class="py-12 px-36">
+
+        <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg px-4 py-6">
+            <form wire:submit="addStudent" class="flex flex-col gap-2">
+                <!-- Name -->
+                <div>
+                    <x-input-label for="name" :value="__('welcome.Student name')" />
+                    <x-text-input wire:model="name" id="name" class="block mt-1 w-full" type="text" name="name" required autofocus autocomplete="name" />
+                    <x-input-error :messages="$errors->get('name')" class="mt-2" />
+                </div>
+
+                {{-- Apellido paterno --}}
+                <div>
+                    <x-input-label for="father_surname" :value="__('welcome.Father Surname')" />
+                    <x-text-input id="father_surname" class="block mt-1 w-full" type="text" name="father_surname" required autofocus />
+                    <x-input-error :messages="$errors->get('name')" class="mt-2" />
+                </div>
+
+                {{-- Apellido materno --}}
+                <div>
+                    <x-input-label for="mother_surname" :value="__('welcome.Mother Surname')" />
+                    <x-text-input id="mother_surname" class="block mt-1 w-full" type="text" name="mother_surname" required autofocus />
+                    <x-input-error :messages="$errors->get('name')" class="mt-2" />
+                </div>
+
+                {{-- Cumpleaños --}}
+                <div>
+                    <x-input-label for="birthday" :value="__('welcome.Birthday')" />
+                    <x-text-input id="birthday" class="block mt-1 w-full" type="text" birthday="name" required autofocus />
+                    <x-input-error :messages="$errors->get('name')" class="mt-2" />
+                </div>
+
+                {{-- Grado escolar --}}
+                <div class="flex gap-3">
+                    <div>
+                        <x-input-label for="level" :value="__('welcome.School level')"/>
+                        <select name="grade" id="" class="rounded-md"> Grado escolar
+                            @foreach ($levels as $level)
+                                <option value="{{ $level }}">
+                                    {{ $level }}                
+                                </option>
+                            @endforeach 
+                        </select>
+                    </div>
+                    <div>
+                        <x-input-label for="grade" :value="__('welcome.School Grade')" />
+                        <select name="grade" id="" class="rounded-md"> Grado escolar
+                            @foreach ($grades as $grade)
+                                <option value="{{ $grade }}">
+                                    {{ $grade }}                
+                                </option>
+                            @endforeach 
+                        </select>
+                    </div>
+                </div>
+        
+                
+        
+                <div class="flex items-center justify-end mt-4">
+                    <x-primary-button class="ms-4">
+                        {{ __('welcome.Add student') }}
+                    </x-primary-button>
+                </div>
+            </form>
+        </div>
+
+    </div>
+    
+</div>

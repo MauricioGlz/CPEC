@@ -20,9 +20,11 @@ return new class extends Migration
             $table->string('mother_surname');
             $table->foreignIdFor(Parents::class);
             $table->date('birthday');
+            $table->string('scholar_level')->nullable();
             $table->smallInteger('scholar_grade')->nullable();
             $table->string('grade')->nullable();
             $table->boolean('disability')->nullable();
+            $table->string('disability_type')->nullable();
             $table->foreignIdFor(Catechism::class)->nullable();
             $table->boolean('religion_prep')->nullable();
             $table->string('prev_catechisms_grade')->nullable();
