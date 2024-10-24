@@ -2,9 +2,6 @@
 
 use Illuminate\Support\Facades\Route;
 
-Route::view('/', 'login')
-    ->middleware(['auth', 'login'])
-    ->name('login');
 
 Route::view('dashboard', 'dashboard')
     ->middleware(['auth', 'verified'])
