@@ -1,6 +1,7 @@
 <?php 
 
 return [
+    'Name' => 'Nombre',
     'Register' => 'Registrate',
     'login' => 'Entrar',
     'Password' => 'Contraseña',
@@ -27,5 +28,20 @@ return [
     'Obserbations' => 'Observaciones de catequista',
     'Yes' => 'Si',
     'No' => 'No',
+    'Father name' => 'Nombre del padre',
+    'Mother name' => 'Nombre de la madre',
+    'Father phone' => 'Número teléfonico del padre',
+    'Mother phone' => 'Número teléfonico de la madre',
+    'Father ocupation' => 'Ocupación de la madre',
+    'Mother ocupation' => 'Ocupación del padre',
+    'Relationship' => 'Estatus de relacion entre los padres',
+    'Cert' => [
+        'Birth' => 'Certificado de nacimiento',
+        'Bautizim' => 'Certificado de Bautizo',
+        'Simple' => 'Copia simple de bautizo',
+        'Previous' => 'Certificado de curso previo (sin sacramento)',
+        'Communion' => 'Certificado de comunion',
+        'Confirmation' => 'Certificado de confirmación',
+    ]
 ]; 
 
