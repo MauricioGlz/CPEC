@@ -24,7 +24,7 @@ return [
     'Disability type' => 'Tipo de discapacidad',
     'Religious prep' => '¿Tiene preparación religiosa?',
     'Last prep' => 'Ultima preparación',
-    'Obserbations' => 'Obserbaciones de catequista',
+    'Obserbations' => 'Observaciones de catequista',
     'Yes' => 'Si',
     'No' => 'No',
 ]; 
