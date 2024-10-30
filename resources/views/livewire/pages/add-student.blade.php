@@ -5,7 +5,17 @@ use Livewire\Volt\Component;
 
 new #[Layout('layouts.app')] class extends Component
 {   
-    
+    public string $std_name = "";
+    public string $father_surname = "";
+    public string $mother_surname = "";
+    public string $birthday = "";
+    public string $grade = "";
+    public int $schoollar_grade = 1;
+    public bool $disability = false;
+    public string $disability_type = "";
+    public bool $religion_prep = false;
+    public string $prev_catechisms_grade = "";
+    public string $observations = "";
     public array $levels = ['Primaria', 'Secundaria', 'Preparatoria'];
     public array $grades = [1,2,3,4,5,6];
 
@@ -29,49 +39,51 @@ new #[Layout('layouts.app')] class extends Component
                 <p class="text-xl font-bold text-gray-700 pb-2 text-center">Datos del alumno</p>
                 <!-- Name -->
                 <div>
-                    <x-input-label for="name" :value="__('welcome.Student name')" />
-                    <x-text-input wire:model="name" id="name" class="block mt-1 w-full" type="text" name="name" required autofocus autocomplete="name" />
+                    <x-input-label for="std_name" :value="__('welcome.Student name')" />
+                    <x-text-input wire:model="std_name" id="std_name" class="block mt-1 w-full" type="text" name="std_name" required autofocus/>
                     <x-input-error :messages="$errors->get('name')" class="mt-2" />
                 </div>
         
                 {{-- Apellido paterno --}}
                 <div>
                     <x-input-label for="father_surname" :value="__('welcome.Father Surname')" />
-                    <x-text-input id="father_surname" class="block mt-1 w-full" type="text" name="father_surname" required autofocus />
+                    <x-text-input id="father_surname" class="block mt-1 w-full" type="text" name="father_surname" wire:model="father_surname" required autofocus />
                     <x-input-error :messages="$errors->get('name')" class="mt-2" />
                 </div>
         
                 {{-- Apellido materno --}}
                 <div>
                     <x-input-label for="mother_surname" :value="__('welcome.Mother Surname')" />
-                    <x-text-input id="mother_surname" class="block mt-1 w-full" type="text" name="mother_surname" required autofocus />
+                    <x-text-input id="mother_surname" class="block mt-1 w-full" type="text" name="mother_surname" wire:mode="mother_surname" required autofocus />
                     <x-input-error :messages="$errors->get('name')" class="mt-2" />
                 </div>
         
                 {{-- Cumpleaños --}}
                 <div>
                     <x-input-label for="birthday" :value="__('welcome.Birthday')" />
-                    <x-text-input id="birthday" class="block mt-1 w-full" type="text" birthday="name" required autofocus />
+                    <x-text-input id="birthday" class="block mt-1 w-full" type="text" birthday="name" wire:model="birthday" required autofocus />
                     <x-input-error :messages="$errors->get('name')" class="mt-2" />
                 </div>
         
-                {{-- Grado escolar --}}
+                {{-- Grado level --}}
                 <div class="flex gap-3">
                     <div>
                         <x-input-label for="level" :value="__('welcome.School level')"/>
                         <select name="grade" id="" class="rounded-md"> Grado escolar
                             @foreach ($levels as $level)
-                                <option value="{{ $level }}">
+                                <option wire:model="grade" value="{{ $level }}">
                                     {{ $level }}                
                                 </option>
                             @endforeach 
                         </select>
                     </div>
+
+                    {{-- Grado escolar --}}
                     <div>
                         <x-input-label for="grade" :value="__('welcome.School Grade')" />
                         <select name="grade" id="" class="rounded-md"> Grado escolar
                             @foreach ($grades as $grade)
-                                <option value="{{ $grade }}">
+                                <option wire:model="schoolar_grade" value="{{ $grade }}">
                                     {{ $grade }}                
                                 </option>
                             @endforeach 
@@ -84,11 +96,11 @@ new #[Layout('layouts.app')] class extends Component
                     <x-input-label :value="__('welcome.Disability')" class="pb-3"/>
                     <div class="flex flex-row gap-3">
                         <div class="flex flex-row gap-3">
-                            <x-input-label for="disability" :value="__('welcome.Yes')" />
+                            <x-input-label for="disability" wire:model.boolean="disability" :value="__('welcome.Yes')" />
                             <input type="radio" name="disability" :value="__('welcome.Yes')"/>
                         </div>
                         <div class="flex flex-row gap-3">
-                            <x-input-label for="disability" :value="__('welcome.No')" />
+                            <x-input-label for="disability" wire:model="disability" :value="__('welcome.No')" />
                             <input type="radio" name="disability" :value="__('welcome.No')" selected/>
                         </div>
                     </div>
@@ -97,7 +109,7 @@ new #[Layout('layouts.app')] class extends Component
                 {{-- Tipo de discapacidad --}}
                 <div>
                     <x-input-label for="disability" :value="__('welcome.Disability type')" />
-                    <x-text-input id="disability" class="block mt-1 w-full" type="text" required autofocus />
+                    <x-text-input id="disability" wire:model="disability_type" class="block mt-1 w-full" type="text" required autofocus />
                     <x-input-error :messages="$errors->get('name')" class="mt-2" />
                 </div>
         
@@ -107,11 +119,11 @@ new #[Layout('layouts.app')] class extends Component
                     <div class="flex flex-row gap-3">
                         <div class="flex flex-row gap-3">
                             <x-input-label for="religious-prep" :value="__('welcome.Yes')" />
-                            <input type="radio" name="religious-prep" :value="__('welcome.Yes')"/>
+                            <input type="radio" wire:model.boolean="religion_prep" name="religious-prep" :value='false'/>
                         </div>
                         <div class="flex flex-row gap-3">
                             <x-input-label for="religious-prep" :value="__('welcome.No')" />
-                            <input type="radio" name="religious-prep" :value="__('welcome.No')" selected/>
+                            <input type="radio" wire:model="religion_prep" name="religious-prep" :value="true" selected/>
                         </div>
                     </div>
                 </div>
@@ -119,13 +131,13 @@ new #[Layout('layouts.app')] class extends Component
                 {{-- Ultima preparacion --}}
                 <div>
                     <x-input-label for="last-prep" :value="__('welcome.Last prep')" />
-                    <x-text-input id="last-prep" class="block mt-1 w-full" type="text" required autofocus />
+                    <x-text-input id="last-prep" wire:model="prev_catechisms_grade" class="block mt-1 w-full" type="text" required autofocus />
                     <x-input-error :messages="$errors->get('name')" class="mt-2" />
                 </div>
         
                 <div>
                     <x-input-label for="obserbations" :value="__('welcome.Obserbations')" />
-                    <x-text-input id="obserbations" class="block mt-1 w-full" type="text" autofocus />
+                    <x-text-input id="obserbations" wire:model="observations" class="block mt-1 w-full" type="text" autofocus />
                 </div>
         
             </div>
