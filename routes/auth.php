@@ -32,5 +32,5 @@ Route::middleware('auth')->group(function () {
     Volt::route('confirm-password', 'pages.auth.confirm-password')
         ->name('password.confirm');
 
-    Volt::route('addStudent', 'pages.add-student')->name('test');
+    Volt::route('students/new', 'pages.students.new')->name('Agregar estudiante');
 });
