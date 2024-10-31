@@ -17,6 +17,7 @@ new #[Layout('layouts.app')] class extends Component
     public string $prev_catechisms_grade = "";
     public string $observations = "";
     public array $levels = ['Primaria', 'Secundaria', 'Preparatoria'];
+    public string $selectedLevel = "";
     public array $grades = [1,2,3,4,5,6];
 
     public function addStudent()
@@ -69,7 +70,7 @@ new #[Layout('layouts.app')] class extends Component
                 <div class="flex gap-3">
                     <div>
                         <x-input-label for="level" :value="__('welcome.School level')"/>
-                        <select name="level" id="level" wire:model="grade" class="rounded-md"> Grado escolar
+                        <select name="level" id="level" wire:model.change="selectedLevel" class="rounded-md"> Grado escolar
                             @foreach ($levels as $level)
                                 <option  value="{{ $level }}">
                                     {{ $level }}                
@@ -82,11 +83,19 @@ new #[Layout('layouts.app')] class extends Component
                     <div>
                         <x-input-label for="grade" :value="__('welcome.School Grade')" />
                         <select name="grade" id="grade" wire:model="schoollar_grade" class="rounded-md"> Grado escolar
-                            @foreach ($grades as $grade)
-                                <option value="{{ $grade }}">
-                                    {{ $grade }}                
+                            @if ($selectedLevel == 'Secundaria')
+                                @for ($i = 1; $i <= 3; $i++)
+                                <option value="{{ $i }}">
+                                    {{ $i }}
                                 </option>
-                            @endforeach 
+                                @endfor  
+                            @else
+                                @foreach ($grades as $grade)
+                                    <option value="{{ $grade }}">
+                                        {{ $grade }}
+                                    </option>
+                                @endforeach 
+                            @endif
                         </select>
                     </div>
                 </div>
