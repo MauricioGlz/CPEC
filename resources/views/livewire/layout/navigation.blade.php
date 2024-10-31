@@ -2,6 +2,7 @@
 
 use App\Livewire\Actions\Logout;
 use Livewire\Volt\Component;
+use Illuminate\Support\Facades\Route;
 
 new class extends Component
 {
@@ -14,6 +15,7 @@ new class extends Component
 
         $this->redirect('/', navigate: true);
     }
+    
 }; ?>
 
 <nav x-data="{ open: false }" class="bg-white dark:bg-gray-800 border-b border-gray-100 dark:border-gray-700">
@@ -31,8 +33,14 @@ new class extends Component
                 <!-- Navigation Links -->
                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
                     <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')" wire:navigate>
-                        {{ __('welcome.Dashboard') }}
+                        {{ __('welcome.Dashboard') }} 
                     </x-nav-link>
+                    @if (Route::currentRouteName() != 'dashboard')
+                        <x-nav-link :active="request()->is('students/new')">
+                            <x-tabler-arrow-badge-right-filled />
+                            {{ Route::currentRouteName() }}
+                        </x-nav-link>
+                    @endif
                 </div>
             </div>
 
@@ -101,7 +109,7 @@ new class extends Component
                 <!-- Authentication -->
                 <button wire:click="logout" class="w-full text-start">
                     <x-responsive-nav-link>
-                        {{ __('Log Out') }}
+                        {{ __('welcome.Log Out') }}
                     </x-responsive-nav-link>
                 </button>
             </div>
