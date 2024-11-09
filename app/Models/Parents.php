@@ -16,8 +16,8 @@ class Parents extends Model
         'mother_name',
         'f_phone_number',
         'm_phone_number',
-        'f_occupation',
-        'm_occupation',
+        'f_ocupation',
+        'm_ocupation',
         'relationship_status',
     ];
 

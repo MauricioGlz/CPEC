@@ -30,7 +30,8 @@ class Students extends Model
         'simple_bautizm_cert',
         'prev_course_cert',
         'confirmation_cert',
-        'communion_cert'
+        'communion_cert',
+        'parents_id',
     ];
 
     public function parents() {
@@ -40,6 +41,16 @@ class Students extends Model
     public function store() {
         /* dd(request()->all()); */
 
+        $parent = Parents::create([
+            'father_name' => request('father_name'),
+            'f_phone_number' => request('f_phone_number'),
+            'f_ocupation' => request('f_ocupation'),
+            'mother_name' => request('mother_name'),
+            'm_phone_number' => request('m_phone_number'),
+            'm_ocupation' => request('m_ocupation'),
+            'relationship_status' => request('relationship_status'),
+        ]);
+        
         Students::create([
             'first_name' => request('first_name'),
             'father_surname' => request('father_surname'),
@@ -57,18 +68,11 @@ class Students extends Model
             'simple_bautizm_cert' => request('simple_bautizm_cert'),
             'prev_course_cert' => request('prev_course_cert'),
             'confirmation_cert' => request('confirmation_cert'),
-            'communion_cert' => request('communion_cert')
+            'communion_cert' => request('communion_cert'),
+            'parents_id' => $parent->id, // Set the foreign key here
         ]);
 
-        Parents::create([
-            'father_name' => request('father_name'),
-            'f_phone_number' => request('f_phone_number'),
-            'f_ocupation' => request('f_ocupation'),
-            'mother_name' => request('mother_name'),
-            'm_phone_number' => request('m_phone_number'),
-            'm_ocupation' => request('m_ocupation'),
-            'relationship_status' => request('relationship_status'),
-        ]);
+        
         
         return redirect()->back()->with('success', 'Estudiante agregado');
     }

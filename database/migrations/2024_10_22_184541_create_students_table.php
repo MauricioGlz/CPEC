@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('first_name');
             $table->string('father_surname');
             $table->string('mother_surname');
-            $table->foreignIdFor(Parents::class)->nullable()->constrained();
+            $table->foreignIdFor(Parents::class)->nullable()->constrained()->index();
             $table->string('birthday');
             $table->string('scholar_level')->nullable();
             $table->smallInteger('scholar_grade')->nullable();
