@@ -5,11 +5,10 @@ use Livewire\Volt\Component;
 
 new #[Layout('layouts.app')] class extends Component {
     /* Students */
-    public string $std_name = '';
+    public string $first_name = '';
     public string $father_surname = '';
     public string $mother_surname = '';
     public string $birthday = '';
-    public int $schoollar_grade = 1;
     public bool $disability = false;
     public string $disability_type = '';
     public bool $religion_prep = false;
@@ -37,9 +36,6 @@ new #[Layout('layouts.app')] class extends Component {
     public string $m_ocupation = '';
     public string $relationship_status = '';
 
-    public function addStudent()
-    {
-    }
 };
 ?>
 
@@ -47,7 +43,8 @@ new #[Layout('layouts.app')] class extends Component {
     <!-- Session Status -->
     <x-auth-session-status class="mb-4" :status="session('status')" />
 
-    <form wire:submit="addStudent" class="flex flex-col gap-2  sm:px-4 py-5">
+    <form method="POST" class="flex flex-col gap-2  sm:px-4 py-5">
+        @csrf
 
         <div class="flex flex-col md:flex-col lg:flex-row gap-2 px-4 py-5">
             {{-- Niños --}}
@@ -57,30 +54,30 @@ new #[Layout('layouts.app')] class extends Component {
                 <p class="text-xl font-bold text-gray-700 pb-2 text-center">Datos del alumno</p>
                 <!-- Name -->
                 <div>
-                    <x-input-label for="std_name" :value="__('welcome.Student name')" />
-                    <x-text-input wire:model="std_name" id="std_name" class="block mt-1 w-full" type="text"
-                        name="std_name" required autofocus />
+                    <x-input-label for="first_name" :value="__('welcome.Student name')" />
+                    <x-text-input wire:model="first_name" id="first_name" class="block mt-1 w-full" type="text"
+                        name="first_name" required />
                 </div>
 
                 {{-- Apellido paterno --}}
                 <div>
                     <x-input-label for="father_surname" :value="__('welcome.Father Surname')" />
                     <x-text-input id="father_surname" class="block mt-1 w-full" type="text" name="father_surname"
-                        wire:model="father_surname" required autofocus />
+                        wire:model="father_surname" required />
                 </div>
 
                 {{-- Apellido materno --}}
                 <div>
                     <x-input-label for="mother_surname" :value="__('welcome.Mother Surname')" />
                     <x-text-input id="mother_surname" class="block mt-1 w-full" type="text" name="mother_surname"
-                        wire:mode="mother_surname" required autofocus />
+                        wire:mode="mother_surname" required />
                 </div>
 
                 {{-- Cumpleaños --}}
                 <div>
                     <x-input-label for="birthday" :value="__('welcome.Birthday')" />
-                    <x-text-input id="birthday" class="block mt-1 w-full" type="text" birthday="name"
-                        wire:model="birthday" required autofocus />
+                    <x-text-input id="birthday" class="block mt-1 w-full" type="text" name="birthday"
+                        wire:model="birthday" required />
                 </div>
 
                 {{-- Grado level --}}
@@ -124,11 +121,11 @@ new #[Layout('layouts.app')] class extends Component {
                     <div class="flex flex-row gap-3">
                         <div class="flex flex-row gap-3">
                             <x-input-label for="disability" wire:model.boolean="disability" :value="__('welcome.Yes')" />
-                            <input type="radio" name="disability" :value="__('welcome.Yes')" />
+                            <input type="radio" name="disability" :value="true" />
                         </div>
                         <div class="flex flex-row gap-3">
                             <x-input-label for="disability" wire:model="disability" :value="__('welcome.No')" />
-                            <input type="radio" name="disability" :value="__('welcome.No')" selected />
+                            <input type="radio" name="disability" :value="false" selected />
                         </div>
                     </div>
                 </div>
@@ -136,7 +133,7 @@ new #[Layout('layouts.app')] class extends Component {
                 {{-- Tipo de discapacidad --}}
                 <div>
                     <x-input-label for="disability_type" :value="__('welcome.Disability type')" />
-                    <x-text-input id="disability_type" wire:model="disability_type" class="block mt-1 w-full"
+                    <x-text-input id="disability_type"  name="disability_type" wire:model="disability_type" class="block mt-1 w-full"
                         type="text" required autofocus />
                 </div>
 
@@ -145,28 +142,28 @@ new #[Layout('layouts.app')] class extends Component {
                     <x-input-label :value="__('welcome.Religious prep')" class="pb-3" />
                     <div class="flex flex-row gap-3">
                         <div class="flex flex-row gap-3">
-                            <x-input-label for="religious-prep" :value="__('welcome.Yes')" />
+                            <x-input-label for="religious-prep" :value="__('Welcome.Yes')" />
                             <input type="radio" wire:model.boolean="religion_prep" name="religious-prep"
                                 :value='false' />
                         </div>
                         <div class="flex flex-row gap-3">
-                            <x-input-label for="religious-prep" :value="__('welcome.No')" />
+                            <x-input-label for="religious-prep" :value="__('Welcome.No')" />
                             <input type="radio" wire:model="religion_prep" name="religious-prep"
-                                :value="true" selected />
+                                :value="false" selected />
                         </div>
                     </div>
                 </div>
 
                 {{-- Ultima preparacion --}}
                 <div>
-                    <x-input-label for="last-prep" :value="__('welcome.Last prep')" />
-                    <x-text-input id="last-prep" wire:model="prev_catechisms_grade" class="block mt-1 w-full"
+                    <x-input-label for="prev_catechisms_grade" :value="__('welcome.Last prep')" />
+                    <x-text-input id="prev_catechisms_grade" name="prev_catechisms_grade"  wire:model="prev_catechisms_grade" class="block mt-1 w-full"
                         type="text" required />
                 </div>
 
                 <div>
-                    <x-input-label for="obserbations" :value="__('welcome.Obserbations')" />
-                    <x-text-input id="obserbations" wire:model="observations" class="block mt-1 w-full" type="text"
+                    <x-input-label for="observations" :value="__('welcome.Obserbations')" />
+                    <x-text-input id="observations" name="observations" wire:model="observations" class="block mt-1 w-full" type="text"
                         required />
                 </div>
 
@@ -191,14 +188,14 @@ new #[Layout('layouts.app')] class extends Component {
                     <div>
                         <x-input-label for="f_phone_number" :value="__('welcome.Father phone')" />
                         <x-text-input wire:model="f_phone_number" id="f_phone_number" class="block mt-1 w-full"
-                            type="number" name="f_phone_number" required />
+                            type="text" name="f_phone_number" required />
                     </div>
 
                     <!-- ocupacion padre -->
                     <div>
                         <x-input-label for="f_ocupation" :value="__('welcome.Father ocupation')" />
                         <x-text-input wire:model="f_ocupation" id="f_ocupation" class="block mt-1 w-full"
-                            type="number" name="f_ocupation" required />
+                            type="text" name="f_ocupation" required />
                     </div>
 
                     <!-- Nombre de la madre -->
@@ -212,7 +209,7 @@ new #[Layout('layouts.app')] class extends Component {
                     <div>
                         <x-input-label for="m_phone_number" :value="__('welcome.Mother phone')" />
                         <x-text-input wire:model="m_phone_number" id="m_phone_number" class="block mt-1 w-full"
-                            type="number" name="m_phone_number" required />
+                            type="text" name="m_phone_number" required />
                     </div>
 
                     <!-- ocupacion madre -->
@@ -245,13 +242,13 @@ new #[Layout('layouts.app')] class extends Component {
                                 <div class="flex flex-row gap-3">
                                     <div class="flex flex-row gap-3">
                                         <x-input-label for="birth_cert" :value="__('welcome.Yes')" />
-                                        <input type="radio" name="birth_cert" :value="__('welcome.Yes')"
+                                        <input type="radio" name="birth_cert" :value="true"
                                             wire:model="birth_cert" />
                                     </div>
                                     <div class="flex flex-row gap-3">
                                         <x-input-label for="birth_cert" :value="__('welcome.No')" />
                                         <input type="radio" name="birth_cert" wire:model="birth_cert"
-                                            :value="__('welcome.No')" />
+                                            :value="false" />
                                     </div>
                                 </div>
                             </div>
@@ -262,12 +259,12 @@ new #[Layout('layouts.app')] class extends Component {
                                 <div class="flex flex-row gap-3">
                                     <div class="flex flex-row gap-3">
                                         <x-input-label for="bautizm_cert" :value="__('welcome.Yes')" />
-                                        <input type="radio" name="bautizm_cert" :value="__('welcome.Yes')"
+                                        <input type="radio" name="bautizm_cert" :value="true"
                                             wire:model="bautizm_cert" />
                                     </div>
                                     <div class="flex flex-row gap-3">
                                         <x-input-label for="bautizm_cert" :value="__('welcome.No')" />
-                                        <input type="radio" name="bautizm_cert" :value="__('welcome.No')"
+                                        <input type="radio" name="bautizm_cert" :value="false"
                                             wire:model="bautizm_cert" />
                                     </div>
                                 </div>
@@ -279,12 +276,12 @@ new #[Layout('layouts.app')] class extends Component {
                                 <div class="flex flex-row gap-3">
                                     <div class="flex flex-row gap-3">
                                         <x-input-label for="simple_bautizm_cert" :value="__('welcome.Yes')" />
-                                        <input type="radio" name="simple_bautizm_cert" :value="__('welcome.Yes')" 
+                                        <input type="radio" name="simple_bautizm_cert" :value="true" 
                                         wire:model = "simple_bautizm_cert" />
                                     </div>
                                     <div class="flex flex-row gap-3">
                                         <x-input-label for="simple_bautizm_cert" :value="__('welcome.No')" />
-                                        <input type="radio" name="simple_bautizm_cert" :value="__('welcome.No')"
+                                        <input type="radio" name="simple_bautizm_cert" :value="false"
                                         wire:model = "simple_bautizm_cert" />
                                     </div>
                                 </div>
@@ -300,12 +297,12 @@ new #[Layout('layouts.app')] class extends Component {
                                 <div class="flex flex-row gap-3">
                                     <div class="flex flex-row gap-3">
                                         <x-input-label for="prev_course_cert" :value="__('welcome.Yes')" />
-                                        <input type="radio" name="prev_course_cert" :value="__('welcome.Yes')" 
+                                        <input type="radio" name="prev_course_cert" :value="true" 
                                         wire:model = "prev_course_cert"/>
                                     </div>
                                     <div class="flex flex-row gap-3">
                                         <x-input-label for="prev_course_cert" :value="__('welcome.No')" />
-                                        <input type="radio" name="prev_course_cert" :value="__('welcome.No')"
+                                        <input type="radio" name="prev_course_cert" :value="false"
                                         wire:model = "prev_course_cert" />
                                     </div>
                                 </div>
@@ -317,12 +314,12 @@ new #[Layout('layouts.app')] class extends Component {
                                 <div class="flex flex-row gap-3">
                                     <div class="flex flex-row gap-3">
                                         <x-input-label for="confirmation_cert" :value="__('welcome.Yes')" />
-                                        <input type="radio" name="confirmation_cert" :value="__('welcome.Yes')" 
+                                        <input type="radio" name="confirmation_cert" :value="true" 
                                         wire:model="confirmation_cert" />
                                     </div>
                                     <div class="flex flex-row gap-3">
                                         <x-input-label for="confirmation_cert" :value="__('welcome.No')" />
-                                        <input type="radio" name="confirmation_cert" :value="__('welcome.No')"
+                                        <input type="radio" name="confirmation_cert" :value="false"
                                         wire:model="confirmation_cert" />
                                     </div>
                                 </div>
@@ -334,12 +331,12 @@ new #[Layout('layouts.app')] class extends Component {
                                 <div class="flex flex-row gap-3">
                                     <div class="flex flex-row gap-3">
                                         <x-input-label for="communion_cert" :value="__('welcome.Yes')" />
-                                        <input type="radio" name="communion_cert" :value="__('welcome.Yes')" 
+                                        <input type="radio" name="communion_cert" :value="true" 
                                         wire:model="communion_cert" />
                                     </div>
                                     <div class="flex flex-row gap-3">
                                         <x-input-label for="communion_cert" :value="__('welcome.No')" />
-                                        <input type="radio" name="communion_cert" :value="__('welcome.No')" 
+                                        <input type="radio" name="communion_cert" :value="false" 
                                         wire:model="communion_cert" />
                                     </div>
                                 </div>

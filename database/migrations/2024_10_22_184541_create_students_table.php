@@ -18,11 +18,10 @@ return new class extends Migration
             $table->string('first_name');
             $table->string('father_surname');
             $table->string('mother_surname');
-            $table->foreignIdFor(Parents::class);
-            $table->date('birthday');
+            $table->foreignIdFor(Parents::class)->nullable()->constrained();
+            $table->string('birthday');
             $table->string('scholar_level')->nullable();
             $table->smallInteger('scholar_grade')->nullable();
-            $table->string('grade')->nullable();
             $table->boolean('disability')->nullable();
             $table->string('disability_type')->nullable();
             $table->foreignIdFor(Catechism::class)->nullable();

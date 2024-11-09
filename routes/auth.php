@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Auth\VerifyEmailController;
+use App\Models\Students;
 use Illuminate\Support\Facades\Route;
 use Livewire\Volt\Volt;
 
@@ -33,4 +34,7 @@ Route::middleware('auth')->group(function () {
         ->name('password.confirm');
 
     Volt::route('students/new', 'pages.students.new')->name('Agregar estudiante');
+    Route::post('students/new', [Students::class, 'store']);
+    
 });
+
