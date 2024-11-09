@@ -38,7 +38,7 @@ class Students extends Model
     }
 
     public function store() {
-        /* dd(request('observations')); */
+        /* dd(request()->all()); */
 
         Students::create([
             'first_name' => request('first_name'),
@@ -59,7 +59,17 @@ class Students extends Model
             'confirmation_cert' => request('confirmation_cert'),
             'communion_cert' => request('communion_cert')
         ]);
+
+        Parents::create([
+            'father_name' => request('father_name'),
+            'f_phone_number' => request('f_phone_number'),
+            'f_ocupation' => request('f_ocupation'),
+            'mother_name' => request('mother_name'),
+            'm_phone_number' => request('m_phone_number'),
+            'm_ocupation' => request('m_ocupation'),
+            'relationship_status' => request('relationship_status'),
+        ]);
         
-        return redirect()->back()->with('success', 'Student created successfully!');
+        return redirect()->back()->with('success', 'Estudiante agregado');
     }
 }

@@ -13,10 +13,15 @@ class Parents extends Model
     protected $table = 'parents';
     protected $fillable = [
         'father_name',
-        'mother_name'
+        'mother_name',
+        'f_phone_number',
+        'm_phone_number',
+        'f_occupation',
+        'm_occupation',
+        'relationship_status',
     ];
 
     public function children() {
-        return $this->belongsTo(Students::class);
+        return $this->hasMany(Students::class);
     }
 }
