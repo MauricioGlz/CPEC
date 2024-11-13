@@ -27,9 +27,11 @@
                         </div>
                     </div>
                     <div class="px-4 py-2 text-right">
-                        <x-primary-button> 
-                            <a href="students/new">Abrir</a>
-                        </x-primary-button>
+                        <a href="students/new">
+                            <x-primary-button> 
+                                Abrir
+                            </x-primary-button>
+                        </a>
                     </div>
                 </div>
                 <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg grow md:flex-1">
@@ -44,9 +46,11 @@
                         </div>
                     </div>
                     <div class="px-4 py-2 text-right">
-                        <x-primary-button> 
-                            <a href="/">Abrir</a>
-                        </x-primary-button>
+                        <a href="/">                            
+                            <x-primary-button> 
+                                Abrir
+                            </x-primary-button>
+                        </a>
                     </div>
                 </div>
             </div>
