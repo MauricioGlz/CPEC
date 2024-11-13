@@ -45,12 +45,12 @@
                         <td class="py-2 px-4 border text-sm">{{ $student->prev_catechisms_grade }}</td>
                         <td class="py-2 px-4 border text-sm">{{ $student->observations }}</td>
                          <!-- Certifications Data -->
-                         <td class="py-2 px-4 border text-sm">{{ $student->birth_cert ? '✔' : '✘' }}</td>
-                         <td class="py-2 px-4 border text-sm">{{ $student->bautizm_cert ? '✔' : '✘' }}</td>
-                         <td class="py-2 px-4 border text-sm">{{ $student->simple_bautizm_cert ? '✔' : '✘' }}</td>
-                         <td class="py-2 px-4 border text-sm">{{ $student->prev_course_cert ? '✔' : '✘' }}</td>
-                         <td class="py-2 px-4 border text-sm">{{ $student->confirmation_cert ? '✔' : '✘' }}</td>
-                         <td class="py-2 px-4 border text-sm">{{ $student->communion_cert ? '✔' : '✘' }}</td>
+                         <td class="py-2 px-4 border text-sm">{{ !$student->birth_cert ? '✔' : '✘' }}</td>
+                         <td class="py-2 px-4 border text-sm">{{ !$student->bautizm_cert ? '✔' : '✘' }}</td>
+                         <td class="py-2 px-4 border text-sm">{{ !$student->simple_bautizm_cert ? '✔' : '✘' }}</td>
+                         <td class="py-2 px-4 border text-sm">{{ !$student->prev_course_cert ? '✔' : '✘' }}</td>
+                         <td class="py-2 px-4 border text-sm">{{ !$student->confirmation_cert ? '✔' : '✘' }}</td>
+                         <td class="py-2 px-4 border text-sm">{{ !$student->communion_cert ? '✔' : '✘' }}</td>
                     </tr>
                 @endforeach
             </tbody>

@@ -58,18 +58,18 @@ class Students extends Model
             'birthday' => request('birthday'),
             'scholar_level' => request('level'),
             'scholar_grade' => request('grade'),
-            'disability' => request('disability'),
+            'disability' => filter_var(request('disability'), FILTER_VALIDATE_BOOLEAN) ? 1 : 0,
             'disability_type' => request('disability_type'),
             'religion_prep' => request('religious-prep'),
             'prev_catechisms_grade' => request('prev_catechisms_grade'),
             'observations' => request('observations'),
-            'birth_cert' => request('birth_cert'),
-            'bautizm_cert' => request('bautizm_cert'),
-            'simple_bautizm_cert' => request('simple_bautizm_cert'),
-            'prev_course_cert' => request('prev_course_cert'),
-            'confirmation_cert' => request('confirmation_cert'),
-            'communion_cert' => request('communion_cert'),
-            'parents_id' => $parent->id, // Set the foreign key here
+            'birth_cert' => filter_var(request('birth_cert'), FILTER_VALIDATE_BOOLEAN) ? 1 : 0,
+            'bautizm_cert' => filter_var(request('bautizm_cert'), FILTER_VALIDATE_BOOLEAN) ? 1 : 0,
+            'simple_bautizm_cert' => filter_var(request('simple_bautizm_cert'), FILTER_VALIDATE_BOOLEAN) ? 1 : 0,
+            'prev_course_cert' => filter_var(request('prev_course_cert'), FILTER_VALIDATE_BOOLEAN) ? 1 : 0,
+            'confirmation_cert' => filter_var(request('confirmation_cert'), FILTER_VALIDATE_BOOLEAN) ? 1 : 0,
+            'communion_cert' => filter_var(request('communion_cert'), FILTER_VALIDATE_BOOLEAN) ? 1 : 0,
+            'parents_id' => $parent->id, 
         ]);
 
         

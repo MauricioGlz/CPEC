@@ -228,124 +228,106 @@ new #[Layout('layouts.app')] class extends Component {
 
                 </div>
 
-                <div id="documentation"
-                    class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg px-4 py-6 flex flex-col gap-3">
-
+                <div id="documentation" class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg px-4 py-6 flex flex-col gap-3">
                     <p class="text-xl font-bold text-gray-700 pb-2 text-center">Documentación</p>
-
+                
                     <div class="flex flex-col md:flex-row lg:flex-row">
                         <div class="flex-1">
-
-                            {{-- Nacimiento --}}
+                            <!-- Birth Certificate -->
                             <div>
                                 <x-input-label :value="__('welcome.Cert.Birth')" class="pb-3" />
                                 <div class="flex flex-row gap-3">
                                     <div class="flex flex-row gap-3">
-                                        <x-input-label for="birth_cert" :value="__('welcome.Yes')" />
-                                        <input type="radio" name="birth_cert" :value="true"
-                                            wire:model="birth_cert" />
+                                        <x-input-label for="birth_cert_yes" :value="__('welcome.Yes')" />
+                                        <input type="radio" name="birth_cert" id="birth_cert_yes" value="1" wire:model="birth_cert" />
                                     </div>
                                     <div class="flex flex-row gap-3">
-                                        <x-input-label for="birth_cert" :value="__('welcome.No')" />
-                                        <input type="radio" name="birth_cert" wire:model="birth_cert"
-                                            :value="false" />
+                                        <x-input-label for="birth_cert_no" :value="__('welcome.No')" />
+                                        <input type="radio" name="birth_cert" id="birth_cert_no" value="0" wire:model="birth_cert" />
                                     </div>
                                 </div>
                             </div>
-
-                            {{-- Bautizo --}}
+                
+                            <!-- Baptism Certificate -->
                             <div>
-                                <x-input-label :value="__('welcome.Cert.Bautizim')" class="pb-3" />
+                                <x-input-label :value="__('welcome.Cert.Bautizm')" class="pb-3" />
                                 <div class="flex flex-row gap-3">
                                     <div class="flex flex-row gap-3">
-                                        <x-input-label for="bautizm_cert" :value="__('welcome.Yes')" />
-                                        <input type="radio" name="bautizm_cert" :value="true"
-                                            wire:model="bautizm_cert" />
+                                        <x-input-label for="bautizm_cert_yes" :value="__('welcome.Yes')" />
+                                        <input type="radio" name="bautizm_cert" id="bautizm_cert_yes" value="1" wire:model="bautizm_cert" />
                                     </div>
                                     <div class="flex flex-row gap-3">
-                                        <x-input-label for="bautizm_cert" :value="__('welcome.No')" />
-                                        <input type="radio" name="bautizm_cert" :value="false"
-                                            wire:model="bautizm_cert" />
+                                        <x-input-label for="bautizm_cert_no" :value="__('welcome.No')" />
+                                        <input type="radio" name="bautizm_cert" id="bautizm_cert_no" value="0" wire:model="bautizm_cert" />
                                     </div>
                                 </div>
                             </div>
-
-                            {{-- Copia simple --}}
+                
+                            <!-- Simple Baptism Certificate -->
                             <div>
                                 <x-input-label :value="__('welcome.Cert.Simple')" class="pb-3" />
                                 <div class="flex flex-row gap-3">
                                     <div class="flex flex-row gap-3">
-                                        <x-input-label for="simple_bautizm_cert" :value="__('welcome.Yes')" />
-                                        <input type="radio" name="simple_bautizm_cert" :value="true" 
-                                        wire:model = "simple_bautizm_cert" />
+                                        <x-input-label for="simple_bautizm_cert_yes" :value="__('welcome.Yes')" />
+                                        <input type="radio" name="simple_bautizm_cert" id="simple_bautizm_cert_yes" value="1" wire:model="simple_bautizm_cert" />
                                     </div>
                                     <div class="flex flex-row gap-3">
-                                        <x-input-label for="simple_bautizm_cert" :value="__('welcome.No')" />
-                                        <input type="radio" name="simple_bautizm_cert" :value="false"
-                                        wire:model = "simple_bautizm_cert" />
+                                        <x-input-label for="simple_bautizm_cert_no" :value="__('welcome.No')" />
+                                        <input type="radio" name="simple_bautizm_cert" id="simple_bautizm_cert_no" value="0" wire:model="simple_bautizm_cert" />
                                     </div>
                                 </div>
                             </div>
-
                         </div>
-
+                
                         <div class="flex-1">
-
-                            {{-- Curso previo --}}
+                            <!-- Previous Course Certificate -->
                             <div>
                                 <x-input-label :value="__('welcome.Cert.Previous')" class="pb-3" />
                                 <div class="flex flex-row gap-3">
                                     <div class="flex flex-row gap-3">
-                                        <x-input-label for="prev_course_cert" :value="__('welcome.Yes')" />
-                                        <input type="radio" name="prev_course_cert" :value="true" 
-                                        wire:model = "prev_course_cert"/>
+                                        <x-input-label for="prev_course_cert_yes" :value="__('welcome.Yes')" />
+                                        <input type="radio" name="prev_course_cert" id="prev_course_cert_yes" value="1" wire:model="prev_course_cert" />
                                     </div>
                                     <div class="flex flex-row gap-3">
-                                        <x-input-label for="prev_course_cert" :value="__('welcome.No')" />
-                                        <input type="radio" name="prev_course_cert" :value="false"
-                                        wire:model = "prev_course_cert" />
+                                        <x-input-label for="prev_course_cert_no" :value="__('welcome.No')" />
+                                        <input type="radio" name="prev_course_cert" id="prev_course_cert_no" value="0" wire:model="prev_course_cert" />
                                     </div>
                                 </div>
                             </div>
-
-                            {{-- Confirmación --}}
+                
+                            <!-- Confirmation Certificate -->
                             <div>
                                 <x-input-label :value="__('welcome.Cert.Confirmation')" class="pb-3" />
                                 <div class="flex flex-row gap-3">
                                     <div class="flex flex-row gap-3">
-                                        <x-input-label for="confirmation_cert" :value="__('welcome.Yes')" />
-                                        <input type="radio" name="confirmation_cert" :value="true" 
-                                        wire:model="confirmation_cert" />
+                                        <x-input-label for="confirmation_cert_yes" :value="__('welcome.Yes')" />
+                                        <input type="radio" name="confirmation_cert" id="confirmation_cert_yes" value="1" wire:model="confirmation_cert" />
                                     </div>
                                     <div class="flex flex-row gap-3">
-                                        <x-input-label for="confirmation_cert" :value="__('welcome.No')" />
-                                        <input type="radio" name="confirmation_cert" :value="false"
-                                        wire:model="confirmation_cert" />
+                                        <x-input-label for="confirmation_cert_no" :value="__('welcome.No')" />
+                                        <input type="radio" name="confirmation_cert" id="confirmation_cert_no" value="0" wire:model="confirmation_cert" />
                                     </div>
                                 </div>
                             </div>
-
-                            {{-- Comunion --}}
+                
+                            <!-- Communion Certificate -->
                             <div>
                                 <x-input-label :value="__('welcome.Cert.Communion')" class="pb-3" />
                                 <div class="flex flex-row gap-3">
                                     <div class="flex flex-row gap-3">
-                                        <x-input-label for="communion_cert" :value="__('welcome.Yes')" />
-                                        <input type="radio" name="communion_cert" :value="true" 
-                                        wire:model="communion_cert" />
+                                        <x-input-label for="communion_cert_yes" :value="__('welcome.Yes')" />
+                                        <input type="radio" name="communion_cert" id="communion_cert_yes" value="1" wire:model="communion_cert" />
                                     </div>
                                     <div class="flex flex-row gap-3">
-                                        <x-input-label for="communion_cert" :value="__('welcome.No')" />
-                                        <input type="radio" name="communion_cert" :value="false" 
-                                        wire:model="communion_cert" />
+                                        <x-input-label for="communion_cert_no" :value="__('welcome.No')" />
+                                        <input type="radio" name="communion_cert" id="communion_cert_no" value="0" wire:model="communion_cert" />
                                     </div>
                                 </div>
                             </div>
-
                         </div>
                     </div>
-
                 </div>
+                
             </div>
 
 
