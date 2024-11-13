@@ -36,5 +36,6 @@ Route::middleware('auth')->group(function () {
     Volt::route('students/new', 'pages.students.new')->name('Agregar estudiante');
     Route::post('students/new', [Students::class, 'store']);
     
+    Volt::route('students/list', 'pages.students.students-list')->name('Ver estudiantes');
 });
 

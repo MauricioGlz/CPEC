@@ -46,7 +46,7 @@
                         </div>
                     </div>
                     <div class="px-4 py-2 text-right">
-                        <a href="/">                            
+                        <a href="students/list">                            
                             <x-primary-button> 
                                 Abrir
                             </x-primary-button>
