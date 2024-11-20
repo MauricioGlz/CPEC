@@ -12,6 +12,7 @@ new #[Layout('layouts.app')] class extends Component {
     public bool $disability = false;
     public string $disability_type = '';
     public bool $religion_prep = false;
+    public array $preparation_list = ['Bautizo', 'Preconfirmación', 'Confirmación', 'Precomunion', 'Comunion'];
     public string $prev_catechisms_grade = '';
     public string $observations = '';
     public array $levels = ['Primaria', 'Secundaria', 'Preparatoria'];
@@ -120,22 +121,25 @@ new #[Layout('layouts.app')] class extends Component {
                     <x-input-label :value="__('welcome.Disability')" class="pb-3" />
                     <div class="flex flex-row gap-3">
                         <div class="flex flex-row gap-3">
-                            <x-input-label for="disability" wire:model.boolean="disability" :value="__('welcome.Yes')" />
-                            <input type="radio" name="disability" :value="true" />
+                            <x-input-label for="disability" :value="__('welcome.Yes')" />
+                            <input type="radio" value="1" wire:model.change="disability" />
                         </div>
                         <div class="flex flex-row gap-3">
-                            <x-input-label for="disability" wire:model="disability" :value="__('welcome.No')" />
-                            <input type="radio" name="disability" :value="false" selected />
+                            <x-input-label for="disability" :value="__('welcome.No')" />
+                            <input type="radio" value="0" wire:model.change="disability" />
                         </div>
                     </div>
                 </div>
+                
+                @if ($disability)
+                    {{-- Tipo de discapacidad --}}
+                    <div>
+                        <x-input-label for="disability_type" :value="__('welcome.Disability type')" />
+                        <x-text-input id="disability_type" wire:model="disability_type" class="block mt-1 w-full"
+                            type="text" required autofocus />
+                    </div>
+                @endif
 
-                {{-- Tipo de discapacidad --}}
-                <div>
-                    <x-input-label for="disability_type" :value="__('welcome.Disability type')" />
-                    <x-text-input id="disability_type"  name="disability_type" wire:model="disability_type" class="block mt-1 w-full"
-                        type="text" required autofocus />
-                </div>
 
                 {{-- Preparacion anterior --}}
                 <div>
@@ -143,23 +147,28 @@ new #[Layout('layouts.app')] class extends Component {
                     <div class="flex flex-row gap-3">
                         <div class="flex flex-row gap-3">
                             <x-input-label for="religious-prep" :value="__('Welcome.Yes')" />
-                            <input type="radio" wire:model.boolean="religion_prep" name="religious-prep"
-                                :value='false' />
+                            <input type="radio" wire:model.change="religion_prep" 
+                                value='1' />
                         </div>
                         <div class="flex flex-row gap-3">
                             <x-input-label for="religious-prep" :value="__('Welcome.No')" />
-                            <input type="radio" wire:model="religion_prep" name="religious-prep"
-                                :value="false" selected />
+                            <input type="radio" wire:model.change="religion_prep" 
+                                value="0" />
                         </div>
                     </div>
                 </div>
 
-                {{-- Ultima preparacion --}}
-                <div>
-                    <x-input-label for="prev_catechisms_grade" :value="__('welcome.Last prep')" />
-                    <x-text-input id="prev_catechisms_grade" name="prev_catechisms_grade"  wire:model="prev_catechisms_grade" class="block mt-1 w-full"
-                        type="text" required />
-                </div>
+                @if ($religion_prep)
+                    {{-- Ultima preparacion --}}
+                    <select  id="level" wire:model="prev_catechisms_grade" class="rounded-md"> Ultima preparación
+                        @foreach ($preparation_list as $prep)
+                            <option value="{{ $prep }}">
+                                {{ $prep }}
+                            </option>
+                        @endforeach
+                    </select>
+                    
+                @endif
 
                 <div>
                     <x-input-label for="observations" :value="__('welcome.Obserbations')" />
