@@ -16,14 +16,21 @@
     </head>
     <body class="font-sans text-gray-900 antialiased">
         <div class="min-h-screen flex flex-col sm:justify-center items-center pt-6 sm:pt-0 bg-gray-100 dark:bg-gray-900">
-            <div>
-                <a href="/" wire:navigate>
-                    <x-application-logo class="w-48 h-48 fill-current text-gray-500" />
-                </a>
-            </div>
+            
 
-            <div class="w-full sm:max-w-md mt-6 px-6 py-4 bg-white dark:bg-gray-800 shadow-md overflow-hidden sm:rounded-lg">
-                {{ $slot }}
+            <div class="w-full sm:max-w-2xl mt-6 px-6 py-4 bg-white dark:bg-gray-800 shadow-md overflow-hidden sm:rounded-lg">
+                <div class="flex">
+                    <div class="flex-auto ">
+                        <div class="w-64">
+                            <a href="/" wire:navigate>
+                                <x-application-logo class="min-w-6 h-52 fill-current text-gray-500" />
+                            </a>
+                        </div>
+                    </div>
+                    <div class="flex-auto w-80">
+                        {{ $slot }}
+                    </div>
+                </div>
             </div>
         </div>
     </body>
