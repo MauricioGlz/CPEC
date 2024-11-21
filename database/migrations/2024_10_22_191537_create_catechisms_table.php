@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('course_name');
             $table->foreignIdFor(User::class);
             $table->string('turn');
+            $table->string('is_admin');
             $table->timestamps();
         });
     }
